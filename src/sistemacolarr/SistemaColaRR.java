@@ -40,29 +40,32 @@ public class SistemaColaRR {
         proceso temporal = frente, aux;
         if (frente != null) {
             if (frente == cola) {
-                while (temporal.getEt() > 0) {
-                    JOptionPane.showMessageDialog(null, "tiempo faltante para terminar la ejecucion del proceso: " + temporal.getEt());
-                    temporal.setEt(temporal.getEt() - tiempoPermitido);
+
+                while (frente.getEt() > 0) {
+                    frente.setEt(frente.getEt() - tiempoPermitido);
+                    JOptionPane.showMessageDialog(null, "tiempo faltante para terminar la ejecucion de " + frente.getNombre()+ " son " + frente.getEt()+" Segundos");
+                    if (frente.getEt() <= 0) {
+                        JOptionPane.showMessageDialog(null, "Se completo la ejecucion de " + frente.getNombre());
+                    }
                 }
 
-            } else if (temporal != null && temporal.getEt() > 0) {
-                temporal.mostrarProc();
-                temporal.setEt(temporal.getEt() - tiempoPermitido);
-                if (temporal.getEt() > 0) {
-                    frente = temporal.getSiguiente();
-                    cola.setSiguiente(temporal);
-                    JOptionPane.showMessageDialog(null, "tiempo faltante para terminar la ejecucion del proceso: " + temporal.getEt());
-                    cola = temporal;
+            } else {
+
+                frente.setEt(frente.getEt() - tiempoPermitido);
+
+                if (frente.getEt() <= 0) {
+                    JOptionPane.showMessageDialog(null, "Se completo la ejecucion de " + frente.getNombre());
+                    frente = frente.getSiguiente();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Se termino la ejecucion de este proceso");
-                    frente = temporal.getSiguiente();
-                    temporal = frente;
+                    JOptionPane.showMessageDialog(null, "tiempo faltante para terminar la ejecucion de " + frente.getNombre()+ " son " + frente.getEt()+" Segundos");
+                    cola.setSiguiente(frente);
                     cola = frente;
+                    frente = frente.getSiguiente();
                 }
 
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No hay procesos que atender");
+            JOptionPane.showMessageDialog(null, "No hay procesos existentes a atender");
         }
     }
 
