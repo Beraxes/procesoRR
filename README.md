@@ -1,1 +1,3 @@
-# procesoRR
+#Descripción del problema.
+
+El sistema operativo, en aras de garantiza el uso equitativo del procesador, implementa lo que se llama una cola de procesos, cada proceso tiene un nombre, un tiempo estimado para realizar su trabajo (en segundos, asígnele un tiempo entre 20 y 50) y un tiempo asignado cada vez que se le presta el procesador (se le presta el procesador cuando está en el frente de la cola, dele un tiempo asignado entre 5 y 10 segundos).  Cuando la resta del tiempo asignado del tiempo estimado es mayor a 0, el proceso debe regresar a la cola y esperar su turno, de lo contrario debe salir de la misma, en cualquier caso el sistema debe notificar qué acción ocurrió, si se acoló nuevamente o salió. Cada proceso será atendido de la misma forma.  Implemente una cola para dar soporte a esta técnica de administración de procesos y procesador. 
