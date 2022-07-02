@@ -10,9 +10,9 @@ package sistemacolarr;
  */
 public class proceso {
 
-    String nombre;
-    int et;
-    proceso siguiente;
+    private String nombre;
+    private int et;
+    public proceso siguiente;
 
     public proceso() {
         nombre = "";
