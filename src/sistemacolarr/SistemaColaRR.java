@@ -43,7 +43,9 @@ public class SistemaColaRR {
                 temporal.mostrarProc();
                 temporal.setEt(temporal.getEt() - tiempoPermitido);
                 if (temporal.et > 0) {
+                    frente = temporal.getSiguiente();
                     cola.setSiguiente(temporal);
+                    JOptionPane.showMessageDialog(null, "tiempo faltante para terminar la ejecucion del proceso: " + temporal.et);
                     cola = temporal;
                 } else {
                     aux = temporal;
@@ -53,11 +55,25 @@ public class SistemaColaRR {
                 }
 
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya se termino de atender todos los procesos");
         }
     }
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog("1 Agregar proceso \n 2 atender proceso \n 3 salir"));
+        SistemaColaRR objetoProcesador = new SistemaColaRR();
+        do {
+            if (opcion ==1) {
+                objetoProcesador.colarProceso();
+            }else if (opcion == 2) {
+                objetoProcesador.atenderProceso();
+                
+            }else
+                System.exit(0);
+
+        } while (opcion >= 1 && opcion <= 2);
+
     }
 
 }

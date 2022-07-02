@@ -50,7 +50,9 @@ public class proceso {
     }
 
     public void mostrarProc() {
+        System.out.println("#########################################");
         System.out.println("Nombre del proceso: " + getNombre());
         System.out.println("Tiempo estimado de ejecucion: " + getEt());
+        System.out.println("#########################################");
     }
 }
